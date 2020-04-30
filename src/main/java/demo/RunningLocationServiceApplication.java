@@ -1,6 +1,5 @@
 package demo;
 
-import domain.UnitInfo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
