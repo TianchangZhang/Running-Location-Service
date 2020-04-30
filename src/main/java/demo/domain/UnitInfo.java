@@ -1,11 +1,13 @@
 package demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.Embeddable;
 
 @Data
 @Embeddable
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UnitInfo {
     private final String runningId;
     private String bandMake;

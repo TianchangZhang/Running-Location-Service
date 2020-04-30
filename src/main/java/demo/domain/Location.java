@@ -1,10 +1,16 @@
 package demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-@Table(name = "RUNNING_LOCATIONS")
+@Data
 public class Location {
     enum GpsStatus {
         EXCELLENT, OK, UNRELIABLE, BAD, NOTFIX, UNKNOW;
@@ -49,8 +55,21 @@ public class Location {
     private RunnerMovementType runnerMovementType = RunnerMovementType.STOPPED;
     private String serviceType;
 
-    private Location(String runningId) {
+    public Location(){
+        this.unitInfo = null;
+    }
+
+    @JsonCreator
+    private Location(@JsonProperty("runningId") String runningId) {
         this.unitInfo = new UnitInfo(runningId);
+    }
+
+    public Location(UnitInfo unitInfo){
+        this.unitInfo = unitInfo;
+    }
+
+    public String getRunningId(){
+        return this.unitInfo == null ? null:this.unitInfo.getRunningId();
     }
 
 }
