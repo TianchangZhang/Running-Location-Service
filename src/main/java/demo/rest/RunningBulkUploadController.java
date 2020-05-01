@@ -12,8 +12,12 @@ import java.util.List;
 
 @RestController
 public class RunningBulkUploadController {
-    @Autowired
     private LocationService locationService;
+
+    @Autowired
+    public RunningBulkUploadController(LocationService locationService){
+        this.locationService = locationService;
+    }
 
     @RequestMapping(value = "/running", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)

@@ -9,9 +9,18 @@ import javax.persistence.Embeddable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Embeddable
-@RequiredArgsConstructor
 public class MedicalInfo {
-    private final long bfr;
+    private long bfr;
 
-    private final long bmi;
+    private long fmi;
+
+    //Jackson require a default construct method;
+    public MedicalInfo(){
+
+    }
+
+    public MedicalInfo(long bfr, long fmi){
+        this.bfr = bfr;
+        this.fmi = fmi;
+    }
 }

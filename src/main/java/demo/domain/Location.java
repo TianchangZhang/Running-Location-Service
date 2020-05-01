@@ -10,6 +10,7 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
+@Table(name = "LOCATIONS")
 @Data
 public class Location {
     enum GpsStatus {
